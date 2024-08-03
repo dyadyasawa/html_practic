@@ -11,4 +11,4 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 
 # class StartPageAPIView(APIView):
 class StartPage(TemplateView):
-    template_name = "products_app/start-page.html"
+    template_name = "cars_app/start-page.html"
