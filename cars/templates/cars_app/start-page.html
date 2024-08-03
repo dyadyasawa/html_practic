@@ -1,28 +1,15 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome!</title>
-    <link href="styles/start-page.css" rel="stylesheet" type="text/css">
-</head>
+{% extends 'cars_app/base.html' %}
 
+{% block content %}
 
-
-<body>
-<p style="text-align: right;">
-    <a href="#">Каталог</a>
-    <a href="#">Регистрация</a>
-    <a href="#">Войти</a>
-    <a href="#">Выйти</a>
-</p>
-
-
-<h1>Добро пожаловать на автомобильный сервис <em>"Развалюшка"</em>!</h1>
+<h1 style="text-align: center; font-size: 32pt;">Добро пожаловать на автомобильный сервис <em>"Развалюшка"</em>!</h1>
     <br>
-    <p>Здесь, Вы, можете купить или продать подержаный автомобиль, а также просто узнать "че-почем"</p>
+    <h4 class="text-center">
+        Здесь, Вы, можете купить или продать подержаный автомобиль, а также просто узнать "че-почем"
+    </h4>
     <br>
-    <p class="picture"><img src="images/collage.jpg" title="Машинки"></p>
-    <address class="greeting">Наш адрес: ул.Хорошая, д.11</address>
-</body>
-</html>
+    <p class="picture"><img src="media/car/collage.jpg" title="Машинки"></p>
+    <address class="text-center">Наш адрес: ул.Хорошая, д.11</address>
+
+{% endblock %}
