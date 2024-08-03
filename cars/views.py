@@ -15,6 +15,11 @@ class StartPage(TemplateView):
     template_name = "cars_app/start-page.html"
 
 
+class Catalog(TemplateView):
+    """ Каталог. """
+    template_name = "cars_app/base.html"
+
+
 class CarsListView(ListView):
     """ Выводим список машин. """
     pass
