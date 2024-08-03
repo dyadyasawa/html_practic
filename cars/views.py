@@ -11,4 +11,30 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 
 # class StartPageAPIView(APIView):
 class StartPage(TemplateView):
+    """ Стартовая страница. """
     template_name = "cars_app/start-page.html"
+
+
+class CarsListView(ListView):
+    """ Выводим список машин. """
+    pass
+
+
+class CarDetailView(DetailView):
+    """ Выводим выбранную машину. """
+    pass
+
+
+class CarCreateView(CreateView):
+    """ Создаем машину. """
+    pass
+
+
+class CarUpdateView(UpdateView):
+    """ Редактируем выбранную машину. """
+    pass
+
+
+class CarDeleteView(DeleteView):
+    """ Удаляем выбранную машину. """
+    pass
