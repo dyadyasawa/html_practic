@@ -38,3 +38,8 @@ class CarUpdateView(UpdateView):
 class CarDeleteView(DeleteView):
     """ Удаляем выбранную машину. """
     pass
+
+
+class CategoryList(ListView):
+    """ Выводим список категорий. """
+    pass
