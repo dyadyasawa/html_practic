@@ -6,7 +6,7 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 
 # from cars.paginations import CustomPagination
 # from cars.serializers import ProductSerializer
-# from cars.models import Product
+from cars.models import Car, Category
 
 
 # class StartPageAPIView(APIView):
@@ -42,4 +42,6 @@ class CarDeleteView(DeleteView):
 
 class CategoryList(ListView):
     """ Выводим список категорий. """
-    pass
+
+    model = Category
+    template_name = "cars_app/category-list.html"
