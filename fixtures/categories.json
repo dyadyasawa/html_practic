@@ -1,1 +1,38 @@
-[{"model": "cars.category", "pk": 1, "fields": {"name": "Легковушка", "description": "Автомобиль предназначенный для личного пользования", "image": "category/Машинка_1.png"}}, {"model": "cars.category", "pk": 2, "fields": {"name": "Грузовик", "description": "Автомобиль предназначенный для транспортировки грузов", "image": "category/Машинка_2.jpg"}}, {"model": "cars.category", "pk": 3, "fields": {"name": "Общественный транспорт", "description": "Транспортное средство предназначенное для перевозки пассажиров", "image": "category/Машинка_3.jpg"}}, {"model": "cars.category", "pk": 4, "fields": {"name": "Специальный транспорт", "description": "Транспортное средство предназначенное для выполнения специфических задач", "image": "category/Машинка_4.png"}}]
+[
+  {
+    "model": "cars.category",
+    "pk": 1,
+    "fields": {
+      "name": "Легковушка",
+      "description": "Автомобиль предназначенный для личного пользования",
+      "image": "category/Машинка_1.png"
+    }
+  },
+  {
+    "model": "cars.category",
+    "pk": 2,
+    "fields": {
+      "name": "Грузовик",
+      "description": "Автомобиль предназначенный для транспортировки грузов",
+      "image": "category/Машинка_2.jpg"
+    }
+  },
+  {
+    "model": "cars.category",
+    "pk": 3,
+    "fields": {
+      "name": "Общественный транспорт",
+      "description": "Транспортное средство предназначенное для перевозки пассажиров",
+      "image": "category/Машинка_3.jpg"
+    }
+  },
+  {
+    "model": "cars.category",
+    "pk": 4,
+    "fields": {
+      "name": "Специальный транспорт",
+      "description": "Транспортное средство предназначенное для выполнения специфических задач",
+      "image": "category/Машинка_4.png"
+    }
+  }
+]
