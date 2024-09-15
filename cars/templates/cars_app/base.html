@@ -15,51 +15,55 @@
 </head>
 
   <body>
-    <div class="container-XL">
-        <br>
-        <div class="row text-start">
-            <div class="col-sm-6"></div>
-
-            <div class="col-sm-6">
-                {% include 'cars_app/includes/inc_base.html' %}
-            </div>
-        </div>
-    </div>
-        <br>
-    {% block content %}
-    {% endblock %}
 
     <div class="container-xxl">
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <br>
-            <div class="row">
-                <div class="col-12 col-md">
-                    "Развалюшка!"
-                    <small class="d-block mb-3 text-muted">&copy; 2024</small>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>О нас</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Общая информация</a></li>
-                        <li><a class="text-muted" href="#">Контакты</a></li>
-                    </ul>
-                </div>
 
-                <div class="col-6 col-md">
-                    <h5><a class="text-muted" href="#">Оплата</a></h5>
-                </div>
 
-                <div class="col-6 col-md">
-                    <h5><a class="text-muted" href="#">Доставка</a></h5>
-                </div>
 
-                <div class="col-6 col-md">
-                    <h5>Дополнительно</h5>
-                </div>
+        <br>
+        <div class="row text-start">
+            <div class="col-sm-9">
+
+                {% include 'cars_app/includes/inc_base.html' %}
 
             </div>
-        </footer>
+
+        </div>
     </div>
+<br>
+    {% block content %}
+
+    {% endblock %}
+
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="container-xxl">
+                <br>
+                <div class="row">
+                    <div class="col-1 col-md">
+                        <h3>"Развалюшка!"</h3>
+                        <small class="d-block mb-3 text-muted">&copy; 2024</small>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5><a class="text-muted" href="btn btn-outline-secondary">Контакты</a></h5>
+                    </div>
+
+                    <div class="col-6 col-md">
+                        <h5><a class="text-muted" href="btn btn-outline-secondary">Оплата</a></h5>
+                    </div>
+
+                    <div class="col-6 col-md">
+                        <h5><a class="text-muted" href="btn btn-outline-secondary">Доставка</a></h5>
+                    </div>
+
+                    <div class="col-6 col-md">
+                        <h5>Дополнительно</h5>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{% static 'js/bootstrap.min.js' %}" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

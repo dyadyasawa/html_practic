@@ -1,6 +1,8 @@
 
 {% extends 'cars_app/base.html' %}
 
+{% load my_tags %}
+
 {% block content %}
 
 <h1 class="text-center">Автомобильный сервис "Развалюшка"!</h1>
@@ -16,7 +18,7 @@
                             <div class="card-header">
                                 <h5 class="card-title text-center">{{ object.name }}</h5>
                             </div>
-                          <img src="{{ object.image }}">
+                          <img src="{{ object.image|my_media }}" class="card-img-top" alt="...">
                           <div class="card-body">
                             <p class="card-text">{{ object.description }}</p>
                             <a href="#" class="btn btn-primary">Подробнее</a>
