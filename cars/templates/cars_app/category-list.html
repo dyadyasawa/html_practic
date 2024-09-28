@@ -11,24 +11,34 @@
         <a class="btn btn-secondary m-3" href="#">Добавить</a>
     </div>
     <div class="row">
+
         {% for object in object_list %}
-         <div class="col-3">
 
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-header">
-                                <h5 class="card-title text-center">{{ object.name }}</h5>
-                            </div>
-                          <img src="{{ object.image|my_media }}" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <p class="card-text">{{ object.description }}</p>
-                            <a href="#" class="btn btn-primary">Подробнее</a>
-                          </div>
-                            <div class="card-footer">
+             <div class="col-3">
 
-                            </div>
-                        </div>
+                 <div class="card" style="width: 18rem;">
 
-         </div>
+                     <div class="card-header">
+                         <h5 class="card-title text-center">{{ object.name }}</h5>
+                     </div>
+
+                     <div class="card-body">
+                         <img src="{{ object.image|my_media }}" class="card-img-top" alt="...">
+                     </div>
+
+
+                     <div class="card-body">
+                         <p class="card-text">{{ object.description }}</p>
+                         <a href="#" class="btn btn-primary">Подробнее</a>
+                     </div>
+
+                     <div class="card-footer">
+                     </div>
+
+                 </div>
+
+             </div>
+
         {% endfor %}
     </div>
 
