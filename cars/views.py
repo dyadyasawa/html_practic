@@ -17,12 +17,16 @@ class StartPage(TemplateView):
 
 class CarsListView(ListView):
     """ Выводим список машин. """
-    pass
+
+    model = Car
+    template_name = "cars_app/cars_list.html"
 
 
 class CarDetailView(DetailView):
     """ Выводим выбранную машину. """
-    pass
+
+    model = Car
+    template_name = "cars_app/car_detail.html"
 
 
 class CarCreateView(CreateView):

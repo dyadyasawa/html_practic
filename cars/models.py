@@ -28,14 +28,14 @@ class Car(models.Model):
     description = models.TextField(verbose_name='Описание')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, **NULLABLE, verbose_name="Категория")
     image = models.ImageField(upload_to='car/', verbose_name='Изображение', **NULLABLE)
-    year = models.DateTimeField(verbose_name="Год выпуска")
+    year = models.DateField(verbose_name="Год выпуска")
     price = models.PositiveIntegerField(verbose_name='Цена за покупку')
     mileage = models.PositiveIntegerField(verbose_name="Пробег")
     carrying = models.PositiveIntegerField(verbose_name="Грузоподъемность", **NULLABLE)
     created_at = models.DateTimeField(auto_now_add=True, editable=False, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, editable=False, verbose_name='Дата изменения')
     passengers_count = models.PositiveIntegerField(verbose_name="Количество пассажиров без водителя", **NULLABLE)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, **NULLABLE, verbose_name='Создатель')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, **NULLABLE, verbose_name='Владелец')
 
     def __str__(self):
         return f'Машина: {self.name}, год выпуска: {self.year}'
