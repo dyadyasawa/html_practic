@@ -29,7 +29,7 @@
 
                      <div class="card-body">
                          <p class="card-text">{{ object.description }}</p>
-                         <a href="#" class="btn btn-primary">Подробнее</a>
+                         <a href="{% url 'cars:cars-categories-list' object.pk %}" class="btn btn-primary">Подробнее</a>
                      </div>
 
                      <div class="card-footer">

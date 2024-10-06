@@ -12,7 +12,7 @@ from cars.models import Car, Category
 # class StartPageAPIView(APIView):
 class StartPage(TemplateView):
     """ Стартовая страница. """
-    template_name = "cars_app/start-page.html"
+    template_name = "cars_app/start_page.html"
 
 
 class CarsListView(ListView):
@@ -20,6 +20,27 @@ class CarsListView(ListView):
 
     model = Car
     template_name = "cars_app/cars_list.html"
+
+
+class CarsCategoriesListView(ListView):
+    """ Выводим список машин определенной категории. """
+
+    model = Category
+    template_name = "cars_app/cars_list_categories.html"
+
+    def get_queryset(self, *args, **kwargs):
+
+        queryset = super().get_queryset(*args, **kwargs)
+        id_category = self.kwargs.get("pk")
+        print(id_category)
+
+        queryset = queryset.get(pk=id_category)
+        print(queryset)
+
+        queryset = queryset.car_set.all()
+        print(queryset)
+
+        return queryset
 
 
 class CarDetailView(DetailView):
@@ -48,4 +69,4 @@ class CategoryList(ListView):
     """ Выводим список категорий. """
 
     model = Category
-    template_name = "cars_app/category-list.html"
+    template_name = "cars_app/category_list.html"

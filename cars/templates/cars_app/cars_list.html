@@ -28,8 +28,8 @@
 
 
                      <div class="card-footer">
-                         <p class="card-text">{{ object.price }}</p>
-                         <a href="{% url 'cars:cars-detail' object.pk %}" class="btn btn-primary">Подробнее</a>
+                         <p class="card-text">{{ object.price }}$</p>
+                         <a href="{% url 'cars:car-detail' object.pk %}" class="btn btn-primary">Подробнее</a>
                      </div>
 
                  </div>
