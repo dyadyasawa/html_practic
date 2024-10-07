@@ -1,9 +1,10 @@
 # from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 # from rest_framework.response import Response
+from django.urls import reverse_lazy
 from rest_framework.views import APIView
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
-
+from cars.forms import CarForm
 # from cars.paginations import CustomPagination
 # from cars.serializers import ProductSerializer
 from cars.models import Car, Category
@@ -31,14 +32,11 @@ class CarsCategoriesListView(ListView):
     def get_queryset(self, *args, **kwargs):
 
         queryset = super().get_queryset(*args, **kwargs)
-        id_category = self.kwargs.get("pk")
-        print(id_category)
+        id_category = self.kwargs.get("pk")  # Получаем id категории из-под которой заходим
 
-        queryset = queryset.get(pk=id_category)
-        print(queryset)
+        queryset = queryset.get(pk=id_category)  # Получаем единственную категорию по id
 
-        queryset = queryset.car_set.all()
-        print(queryset)
+        queryset = queryset.car_set.all()  # Формируем queryset из элементов модели Car с заданной категорией (по id)
 
         return queryset
 
@@ -52,7 +50,11 @@ class CarDetailView(DetailView):
 
 class CarCreateView(CreateView):
     """ Создаем машину. """
-    pass
+
+    model = Car
+    template_name = 'cars_app/car_form.html'
+    form_class = CarForm
+    success_url = reverse_lazy('cars:list')
 
 
 class CarUpdateView(UpdateView):
