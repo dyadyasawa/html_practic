@@ -54,17 +54,38 @@ class CarCreateView(CreateView):
     model = Car
     template_name = 'cars_app/car_form.html'
     form_class = CarForm
-    success_url = reverse_lazy('cars:list')
+    success_url = reverse_lazy('cars:cars-list')
+
+    def form_valid(self, form):
+
+        car = form.save()
+        car.owner = self.request.user
+        car.save()
+
+        # context_data = self.get_context_data()
+        # formset = context_data['formset']
+        #
+        # if formset.is_valid():
+        #     formset.instance = car
+        #     formset.save()
+        return super().form_valid(form)
 
 
 class CarUpdateView(UpdateView):
     """ Редактируем выбранную машину. """
-    pass
+
+    model = Car
+    template_name = 'cars_app/car_form.html'
+    form_class = CarForm
+    success_url = reverse_lazy('cars:cars-list')
 
 
 class CarDeleteView(DeleteView):
     """ Удаляем выбранную машину. """
-    pass
+
+    model = Car
+    template_name = 'cars_app/car_confirm_delete.html'
+    success_url = reverse_lazy('cars:cars-list')
 
 
 class CategoryList(ListView):

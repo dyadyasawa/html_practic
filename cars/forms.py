@@ -32,7 +32,7 @@ class CarForm(StyleMixin):
     class Meta:
         model = Car
         # fields = '__all__'
-        fields = ('name', 'description', 'category', 'price',)
+        fields = ('name', 'description', 'category', 'image', 'year', 'mileage', 'price',)
 
     # def clean_name(self):
     #     cleaned_data = self.cleaned_data['name']
