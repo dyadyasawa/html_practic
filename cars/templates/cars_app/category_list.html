@@ -8,7 +8,7 @@
 <h1 class="text-center">Автомобильный сервис "Развалюшка"!</h1>
 <div class="container">
     <div class="text-end">
-        <a class="btn btn-secondary m-3" href="#">Добавить</a>
+        <a class="btn btn-secondary m-3" href=" {% url 'cars:category-create' %}">Добавить категорию</a>
     </div>
     <div class="row">
 
@@ -30,6 +30,11 @@
                      <div class="card-body">
                          <p class="card-text">{{ object.description }}</p>
                          <a href="{% url 'cars:cars-categories-list' object.pk %}" class="btn btn-primary">Подробнее</a>
+                         <a href="{% url 'cars:category-update' object.pk %}" class="btn btn-warning">Редактировать</a>
+                         <p></p>
+                         <p class="card-text text-center">
+                             <a href="{% url 'cars:category-delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                         </p>
                      </div>
 
                      <div class="card-footer">
