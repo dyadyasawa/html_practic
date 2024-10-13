@@ -1,20 +1,24 @@
 from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView
 # from rest_framework.permissions import AllowAny
 # from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from users.apps import UsersConfig
-# from users.views import (
-#     UserCreateAPIView,
-#     UserDeleteApiView,
-#     UserDetailApiView,
-#     UserListApiView,
-#     UserUpdateApiView,
-# )
+from users.forms import LoginCustomForm
+from users.views import RegisterView, RegisterMessageView
 
 app_name = UsersConfig.name
 
 urlpatterns = [
-    # path("register/", UserCreateAPIView.as_view(), name="register"),
+    path("register/", RegisterView.as_view(), name="register"),
+    path('register_message/', RegisterMessageView.as_view(), name='register-message'),
+    path('register_email_confirm/<str:token>/', email_verification, name='email-confirm'),
+
+    path('login/', LoginView.as_view(template_name='users_app/login.html', form_class=LoginCustomForm), name="login"),
+    path('logout/', LogoutView.as_view(), name='logout'),
+
+
+
     # path("token/refresh/", TokenRefreshView.as_view(permission_classes=(AllowAny,)), name="token_refresh"),
     # path("detail/<int:pk>/", UserDetailApiView.as_view(), name="detail"),
     # path("update/<int:pk>/", UserUpdateApiView.as_view(), name="update"),

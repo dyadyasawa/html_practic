@@ -1,6 +1,6 @@
 
-<a class="p-l-2 btn btn-outline-primary" href="#">Войти</a>
-<a class="p-l-2 btn btn-outline-primary" href="#">Регистрация</a>
+<a class="p-l-2 btn btn-outline-primary" href="{% url 'users:login' %}">Войти</a>
+<a class="p-l-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
 
 <a class="p-l-2 btn btn-outline-primary" href="{% url 'cars:cars-list' %}">Каталог</a>
 <a class="p-l-2 btn btn-outline-primary" href="{% url 'cars:category-list' %}">Категории</a>
