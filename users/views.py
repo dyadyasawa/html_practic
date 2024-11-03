@@ -1,4 +1,5 @@
-from random import random
+
+import random
 
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
@@ -18,6 +19,7 @@ from django.views.generic import CreateView, TemplateView
 # from rest_framework.views import APIView
 
 from config import settings
+from config.settings import EMAIL_HOST_USER
 from users.forms import RegisterForm
 from users.models import User
 # from users.paginations import CustomPagination
@@ -30,13 +32,13 @@ class RegisterView(CreateView):
     model = User
     template_name = 'users_app/user_form.html'
     form_class = RegisterForm
-    success_url = reverse_lazy('cars:start-page')
+    success_url = reverse_lazy('users:register-message')
 
     def form_valid(self, form):
         user = form.save()
         user.is_active = False
 
-        token = "".join(  [  str(random.randint(0, 9)) for i in range(10)  ]  )
+        token = "".join([str(random.randint(0, 9)) for i in range(10)])
         user.token = token
         user.save()
         host = self.request.get_host()
@@ -48,6 +50,7 @@ class RegisterView(CreateView):
             [user.email],
         )
         return super().form_valid(form)
+
 
 class RegisterMessageView(TemplateView):
 

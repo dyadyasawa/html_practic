@@ -5,14 +5,14 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from users.apps import UsersConfig
 from users.forms import LoginCustomForm
-from users.views import RegisterView, RegisterMessageView
+from users.views import RegisterView, RegisterMessageView, email_verification
 
 app_name = UsersConfig.name
 
 urlpatterns = [
     path("register/", RegisterView.as_view(), name="register"),
     path('register_message/', RegisterMessageView.as_view(), name='register-message'),
-    path('register_email_confirm/<str:token>/', email_verification, name='email-confirm'),
+    path('register/email_confirm/<str:token>/', email_verification, name='email-confirm'),
 
     path('login/', LoginView.as_view(template_name='users_app/login.html', form_class=LoginCustomForm), name="login"),
     path('logout/', LogoutView.as_view(), name='logout'),
