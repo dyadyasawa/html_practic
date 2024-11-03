@@ -1,0 +1,47 @@
+
+{% extends 'cars_app/base.html' %}
+
+{% block content %}
+
+<h1 class="text-center">Автомобильный сервис "Развалюшка"</h1>
+<br>
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+
+            <div class="col-4">
+            </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        {% if object %}
+                            <h3>Редактирование автомобиля</h3>
+                        {% else %}
+                            <h3>Добавление автомобиля</h3>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    {% if object %}
+                        <button type="submit" class="btn btn-success">Подтвердить изменения</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-success">Добавить</button>
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+
+            <div class="col-4">
+            </div>
+
+        </div>
+    </form>
+
+{% endblock %}
