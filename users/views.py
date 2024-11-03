@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, ListView
 
 # from rest_framework.generics import (
 #     CreateAPIView,
@@ -63,3 +63,9 @@ def email_verification(request, token):
     user.save()
     # return redirect(reverse('users:login'))
     return HttpResponseRedirect('/users/login/')
+
+
+class UsersListView(ListView):
+
+    model = User
+    template_name = 'users_app/users_list.html'

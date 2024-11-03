@@ -1,0 +1,47 @@
+
+{% extends 'cars_app/base.html' %}
+
+{% load my_tags %}
+
+{% block content %}
+
+<h1 class="text-center">Автомобильный сервис "Развалюшка"!</h1>
+<br>
+<br>
+<h2 class="text-center">Наши пользователи</h2>
+
+<div class="container">
+    <div class="text-end">
+        <a class="btn btn-secondary m-3" href="#">Добавить</a>
+    </div>
+    <div class="row">
+
+        {% for object in object_list %}
+
+             <div class="col-3">
+                 <br>
+                 <div class="card" style="width: 18rem;">
+                     <div class="card-header">
+                         <h5 class="card-title text-center">{{ object.email }}</h5>
+                     </div>
+
+                     <div class="card-body">
+                         <img src="{{ object.avatar|my_media }}" class="card-img-top" alt="...">
+                     </div>
+
+
+                     <div class="card-footer">
+                         <p class="card-text">{{ object.city }}</p>
+                         <a href="#" class="btn btn-primary">Подробнее</a>
+                     </div>
+
+                 </div>
+
+             </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
