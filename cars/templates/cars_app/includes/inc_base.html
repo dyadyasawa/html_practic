@@ -4,11 +4,11 @@
     <a class="p-l-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
 {% endif %}
 
-<a class="p-l-2 btn btn-outline-primary" href="{% url 'cars:cars-list' %}">Каталог</a>
-<a class="p-l-2 btn btn-outline-primary" href="{% url 'cars:category-list' %}">Категории</a>
 <a class="p-l-2 btn btn-outline-primary" href="{% url 'cars:start-page' %}">Главная</a>
-<a class="p-l-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выйти</a>
+<a class="p-l-2 btn btn-outline-primary" href="{% url 'cars:category-list' %}">Категории</a>
+<a class="p-l-2 btn btn-outline-primary" href="{% url 'cars:cars-list' %}">Каталог</a>
 
 {% if user.is_authenticated %}
     <a class="p-l-2 btn btn-outline-primary" href="{% url 'users:users-list' %}">Пользователи</a>
+    <a class="p-l-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выйти</a>
 {% endif %}
