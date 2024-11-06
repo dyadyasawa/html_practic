@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, TemplateView, ListView, UpdateView, DetailView, DeleteView
 
 # from rest_framework.generics import (
 #     CreateAPIView,
@@ -69,3 +69,21 @@ class UsersListView(ListView):
 
     model = User
     template_name = 'users_app/users_list.html'
+
+
+class UserDetailView(DetailView):
+
+    model = User
+    template_name = 'users_app/user_detail.html'
+
+
+class UserUpdateView(UpdateView):
+
+    model = User
+    template_name = 'users_app/user_form.html'
+
+
+class UserDeleteView(DeleteView):
+
+    model = User
+    template_name = 'users_app/user_confirm_delete.html'

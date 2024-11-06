@@ -32,7 +32,7 @@
 
                      <div class="card-footer">
                          <p class="card-text">{{ object.city }}</p>
-                         <a href="#" class="btn btn-primary">Подробнее</a>
+                         <a href="{% url 'users:user-detail' object.pk %}" class="btn btn-primary">Подробнее</a>
                      </div>
 
                  </div>
