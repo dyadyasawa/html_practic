@@ -4,34 +4,52 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <br>
     <div class="row">
-        <div class="col-2">
+        <div class="col-1">
         </div>
 
-        <div class="col-8 w=100">
+        <div class="col-4">
 
-            <div class="card" style="width: 18rem;">
+            <div class="card w-100" style="width: 18rem;">
                 <div class="card-header  text-center">
-                    <p class="card-text">Пользователь: {{object.email}}</p>
+                    <p class="card-text">
+                        <h4>Пользователь: {{object.email}}</h4>
+                    </p>
                 </div>
 
                 <div class="card-body text-center">
                     <img src="{{ object.avatar|my_media }}" class="card-img-top" alt="...">
-                    <p>
-                    <a href="#" class="btn btn-primary">Внести изменения</a>
-                    </p>
+
                 </div>
 
-                <div class="card-footer">
-                    <p class="card-text">Город: {{object.city}}</p>
-                    <p class="card-text">Телефон: {{object.phone}}</p>
+                <div class="card-footer text-center">
+                    <p>
+                        <a href="#" class="btn btn-primary">Внести изменения</a>
+                    </p>
+
                 </div>
             </div>
         </div>
 
+        <div class="col-5">
+
+            <p class="card-text">
+                <h4>Город: {{object.city}}</h4>
+            </p>
+            <p class="card-text">
+                <h4>Телефон: {{object.phone}}</h4>
+            </p>
+
+
+
+        </div>
+
         <div class="col-2">
+            <p>
+                Здесь будут кнопки
+            </p>
         </div>
 
     </div>
