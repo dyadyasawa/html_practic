@@ -1,5 +1,6 @@
 # from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 # from rest_framework.response import Response
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from rest_framework.views import APIView
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -33,7 +34,7 @@ class CarDetailView(DetailView):
     template_name = "cars_app/car_detail.html"
 
 
-class CarCreateView(CreateView):
+class CarCreateView(LoginRequiredMixin, CreateView):
     """ Создаем машину. """
 
     model = Car
@@ -56,7 +57,7 @@ class CarCreateView(CreateView):
         return super().form_valid(form)
 
 
-class CarUpdateView(UpdateView):
+class CarUpdateView(LoginRequiredMixin, UpdateView):
     """ Редактируем выбранную машину. """
 
     model = Car
@@ -65,7 +66,7 @@ class CarUpdateView(UpdateView):
     success_url = reverse_lazy('cars:cars-list')
 
 
-class CarDeleteView(DeleteView):
+class CarDeleteView(LoginRequiredMixin, DeleteView):
     """ Удаляем выбранную машину. """
 
     model = Car
