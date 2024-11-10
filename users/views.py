@@ -22,7 +22,9 @@ from django.views.generic import CreateView, TemplateView, ListView, UpdateView,
 from config import settings
 from config.settings import EMAIL_HOST_USER
 from users.forms import RegisterForm, UserForm, MessageForm
-from users.models import User
+from users.models import User, Message
+
+
 # from users.paginations import CustomPagination
 # from users.serializers import UserSerializer
 
@@ -105,8 +107,8 @@ class UserDeleteView(UserPassesTestMixin, DeleteView):
         return user.is_superuser
 
 
-class MessageForUserView(UpdateView):
-    model = User
+class MessageForUserView(CreateView):
+    model = Message
     form_class = MessageForm
     template_name = 'users_app/send_message_form.html'
-    success_url = reverse_lazy
+    success_url = reverse_lazy('users:users-list')

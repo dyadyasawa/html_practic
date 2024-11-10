@@ -22,3 +22,15 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.email}"
+
+
+class Message(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь", **NULLABLE)
+    message = models.TextField(verbose_name="Сообщение", **NULLABLE)
+
+    class Meta:
+        verbose_name = "Сообщение"
+        verbose_name_plural = "Сообщения"
+
+    def __str__(self):
+        return f"{self.message}"

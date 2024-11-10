@@ -3,7 +3,7 @@ from django import forms
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-from users.models import User
+from users.models import User, Message
 
 
 class StyleMixin(forms.ModelForm):
@@ -52,4 +52,6 @@ class UserForm(StyleMixin):
 
 
 class MessageForm(StyleMixin):
-    pass
+    class Meta:
+        model = Message
+        fields = ("message",)
