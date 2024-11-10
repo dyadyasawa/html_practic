@@ -26,7 +26,8 @@
 
                 <div class="card-footer text-center">
                     <p>
-                        <a href="#" class="btn btn-primary">Внести изменения</a>
+                        <a href="{% url 'users:user-update' object.pk %}" class="btn btn-primary">Внести изменения</a>
+                        <a href="{% url 'users:user-delete' object.pk %}" class="btn btn-danger">Удалить</a>
                     </p>
 
                 </div>
@@ -47,9 +48,7 @@
         </div>
 
         <div class="col-2">
-            <p>
-                Здесь будут кнопки
-            </p>
+
         </div>
 
     </div>

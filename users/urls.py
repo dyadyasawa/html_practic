@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from users.apps import UsersConfig
 from users.forms import LoginCustomForm
 from users.views import RegisterView, RegisterMessageView, UsersListView, email_verification, UserDetailView, \
-    UserDeleteView
+    UserDeleteView, UserUpdateView
 
 app_name = UsersConfig.name
 
@@ -20,7 +20,7 @@ urlpatterns = [
 
     path('list/', UsersListView.as_view(), name='users-list'),
     path('detail/<int:pk>/', UserDetailView.as_view(), name='user-detail'),
-    path('update/<int:pk>/', UserDetailView.as_view(), name='user-update'),
+    path('update/<int:pk>/', UserUpdateView.as_view(), name='user-update'),
     path('delete/<int:pk>/', UserDeleteView.as_view(), name='user-delete'),
 
     # path("token/refresh/", TokenRefreshView.as_view(permission_classes=(AllowAny,)), name="token_refresh"),

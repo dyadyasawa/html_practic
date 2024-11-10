@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends 'cars_app/base.html' %}
+
+{% block content %}
+
+<h1 class="text-center">Автомобильный сервис "Развалюшка"</h1>
+<br>
+
+<div class="container">
+    <h5 class="text-center">Действительно желаете удалить '{{object.email}}'?</h5>
+        <div class="text-center">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <a class="btn btn-primary m-3" href="{% url 'users:user-detail' object.pk %}">Отменить</a>
+                <button type="submit" class="btn btn-danger m-3">Да, удалить</button>
+            </form>
+        </div>
+</div>
+
+{% endblock %}

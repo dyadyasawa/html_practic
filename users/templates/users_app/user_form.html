@@ -13,15 +13,23 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-
+                            {% if user %}
+                                <h4>Редактирование пользователя</h4>
+                            {% else %}
+                                <h4>Регистрация пользователя</h4>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="card-body">
 
                         {% csrf_token %}
                         {{ form.as_p }}
+                        {% if user %}
+                            <button type="submit" class="btn btn-success">Подтвердить изменения</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+                        {% endif %}
 
-                        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
 
                     </div>
                 </div>

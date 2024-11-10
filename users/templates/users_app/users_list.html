@@ -11,9 +11,7 @@
 <h2 class="text-center">Наши пользователи</h2>
 
 <div class="container">
-    <div class="text-end">
-        <a class="btn btn-secondary m-3" href="#">Добавить</a>
-    </div>
+
     <div class="row">
 
         {% for object in object_list %}
@@ -26,7 +24,16 @@
                      </div>
 
                      <div class="card-body">
-                         <img src="{{ object.avatar|my_media }}" class="card-img-top" alt="...">
+                         <p>
+                            <img src="{{ object.avatar|my_media }}" class="card-img-top" alt="...">
+                         </p>
+
+                         {% if object.is_active %}
+                            <p>Активен</p>
+                         {% else %}
+                            <p>Неактивен</p>
+                         {% endif %}
+
                      </div>
 
 

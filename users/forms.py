@@ -11,7 +11,8 @@ class StyleMixin(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+            if field_name != "is_superuser" and field_name != "is_staff" and field_name != "is_active":
+                field.widget.attrs["class"] = "form-control"
 
 
 class RegisterForm(StyleMixin, UserCreationForm):
@@ -41,3 +42,10 @@ class LoginCustomForm(AuthenticationForm):
 #     class Meta:
 #         model = User
 #         fields = ('email',)
+
+
+class UserForm(StyleMixin):
+    class Meta:
+        model = User
+        # fields = '__all__'
+        fields = ("email", "city", "phone", "avatar", "is_superuser", "is_staff", "is_active")

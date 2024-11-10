@@ -20,7 +20,7 @@ from django.views.generic import CreateView, TemplateView, ListView, UpdateView,
 
 from config import settings
 from config.settings import EMAIL_HOST_USER
-from users.forms import RegisterForm
+from users.forms import RegisterForm, UserForm
 from users.models import User
 # from users.paginations import CustomPagination
 # from users.serializers import UserSerializer
@@ -81,9 +81,12 @@ class UserUpdateView(UpdateView):
 
     model = User
     template_name = 'users_app/user_form.html'
+    form_class = UserForm
+    success_url = reverse_lazy('users:users-list')
 
 
 class UserDeleteView(DeleteView):
 
     model = User
     template_name = 'users_app/user_confirm_delete.html'
+    success_url = reverse_lazy('users:users-list')
