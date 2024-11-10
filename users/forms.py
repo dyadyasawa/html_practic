@@ -49,3 +49,7 @@ class UserForm(StyleMixin):
         model = User
         # fields = '__all__'
         fields = ("email", "city", "phone", "avatar", "is_superuser", "is_staff", "is_active")
+
+
+class MessageForm(StyleMixin):
+    pass

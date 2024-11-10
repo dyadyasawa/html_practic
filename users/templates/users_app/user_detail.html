@@ -25,11 +25,12 @@
                 </div>
 
                 <div class="card-footer text-center">
-                    <p>
-                        <a href="{% url 'users:user-update' object.pk %}" class="btn btn-primary">Внести изменения</a>
-                        <a href="{% url 'users:user-delete' object.pk %}" class="btn btn-danger">Удалить</a>
-                    </p>
-
+                    {% if user.is_authenticated %}
+                        <p>
+                            <a href="{% url 'users:user-update' object.pk %}" class="btn btn-primary">Внести изменения</a>
+                            <a href="{% url 'users:user-delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                        </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -51,7 +52,9 @@
         </div>
 
         <div class="col-2">
-
+            {% if user.is_authenticated %}
+                <a href="#" class="btn btn-primary">Отправить сообщение</a>
+            {% endif %}
         </div>
 
     </div>

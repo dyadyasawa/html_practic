@@ -1,6 +1,7 @@
 
 import random
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -20,7 +21,7 @@ from django.views.generic import CreateView, TemplateView, ListView, UpdateView,
 
 from config import settings
 from config.settings import EMAIL_HOST_USER
-from users.forms import RegisterForm, UserForm
+from users.forms import RegisterForm, UserForm, MessageForm
 from users.models import User
 # from users.paginations import CustomPagination
 # from users.serializers import UserSerializer
@@ -65,10 +66,14 @@ def email_verification(request, token):
     return HttpResponseRedirect('/users/login/')
 
 
-class UsersListView(ListView):
+class UsersListView(UserPassesTestMixin, ListView):
 
     model = User
     template_name = 'users_app/users_list.html'
+
+    def test_func(self):
+        user =self.request.user
+        return user.is_superuser
 
 
 class UserDetailView(DetailView):
@@ -77,16 +82,31 @@ class UserDetailView(DetailView):
     template_name = 'users_app/user_detail.html'
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(UserPassesTestMixin, UpdateView):
 
     model = User
     template_name = 'users_app/user_form.html'
     form_class = UserForm
     success_url = reverse_lazy('users:users-list')
 
+    def test_func(self):
+        user =self.request.user
+        return user.is_superuser
 
-class UserDeleteView(DeleteView):
+
+class UserDeleteView(UserPassesTestMixin, DeleteView):
 
     model = User
     template_name = 'users_app/user_confirm_delete.html'
     success_url = reverse_lazy('users:users-list')
+
+    def test_func(self):
+        user =self.request.user
+        return user.is_superuser
+
+
+class MessageForUserView(UpdateView):
+    model = User
+    form_class = MessageForm
+    template_name = 'users_app/send_message_form.html'
+    success_url = reverse_lazy
