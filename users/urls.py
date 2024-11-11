@@ -23,7 +23,7 @@ urlpatterns = [
     path('update/<int:pk>/', UserUpdateView.as_view(), name='user-update'),
     path('delete/<int:pk>/', UserDeleteView.as_view(), name='user-delete'),
 
-    path('message/', MessageForUserView.as_view(), name='user-send-message'),
+    path('message/<int:pk>/', MessageForUserView.as_view(), name='user-send-message'),
 
     # path("token/refresh/", TokenRefreshView.as_view(permission_classes=(AllowAny,)), name="token_refresh"),
     # path("detail/<int:pk>/", UserDetailApiView.as_view(), name="detail"),
