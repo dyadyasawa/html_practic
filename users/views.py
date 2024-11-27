@@ -107,21 +107,35 @@ class UserDeleteView(UserPassesTestMixin, DeleteView):
         return user.is_superuser
 
 
-class MessageForUserView(TemplateView):
-    model = Message
+class MessageForUserView(UpdateView):
+    model = User
     form_class = MessageForm
     template_name = 'users_app/send_message_form.html'
     success_url = reverse_lazy('users:users-list')
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data()
+    #     context['email_for_send'] = self.request.user.email
+    #     return context
+
+    # def get_queryset(self, *args, **kwargs):
+    #     queryset = super().get_queryset(*args, **kwargs)
+    #
+    #     id_addressee = self.kwargs.get("pk")
+    #
+    #     return queryset
 
     # def form_valid(self, form):
     #     message = form.save()
+    #     email_for_send = message.addressee.email
+    #     text = message.message
     #     message.save()
-    #
     #
     #     send_mail(
     #         'Сообщение от Admin',
-    #         f'{message}',
+    #         f'{text}',
     #         EMAIL_HOST_USER,
-    #         [email],
+    #         [email_for_send],
     #     )
+    #     print(email_for_send)
     #     return super().form_valid(form)
