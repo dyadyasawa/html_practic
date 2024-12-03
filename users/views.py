@@ -108,6 +108,8 @@ class UserDeleteView(UserPassesTestMixin, DeleteView):
 
 
 class MessageForUserView(UpdateView):
+    """ Отправляем сообщение пользователю. """
+
     model = User
     form_class = MessageForm
     template_name = 'users_app/send_message_form.html'
@@ -126,10 +128,10 @@ class MessageForUserView(UpdateView):
     #     return queryset
 
     # def form_valid(self, form):
-    #     message = form.save()
-    #     email_for_send = message.addressee.email
-    #     text = message.message
-    #     message.save()
+    #     user = form.save()
+    #     email_for_send = user.email
+    #     text = user.message_set.get(pk=1)
+    #     user.save()
     #
     #     send_mail(
     #         'Сообщение от Admin',
@@ -137,5 +139,10 @@ class MessageForUserView(UpdateView):
     #         EMAIL_HOST_USER,
     #         [email_for_send],
     #     )
-    #     print(email_for_send)
     #     return super().form_valid(form)
+    #
+    # def messages_delete(request):
+    #     """ Удаляем все сообщения пользователю. """
+    #
+    #     messages = Message.objects.all()
+    #     messages.delete()
