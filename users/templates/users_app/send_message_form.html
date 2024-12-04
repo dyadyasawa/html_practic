@@ -1,3 +1,4 @@
+
 {% extends 'cars_app/base.html' %}
 
 {% block content %}
@@ -13,24 +14,17 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            {% if not user.is_authenticated %}
-                                <h4>Регистрация пользователя</h4>
-                            {% else %}
-                                <h4>Редактирование данных пользователя</h4>
-                            {% endif %}
+                            <h4>Сообщение для пользователя: {{object.email}}</h4>
                         </div>
                     </div>
                     <div class="card-body">
 
                         {% csrf_token %}
                         {{ form.as_p }}
-                        {% if user %}
-                            <button type="submit" class="btn btn-success">Подтвердить изменения</button>
-                        {% else %}
-                            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
-                        {% endif %}
 
-
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success">Отправить</button>
                     </div>
                 </div>
             </div>

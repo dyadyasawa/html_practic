@@ -1,0 +1,62 @@
+{% extends 'cars_app/base.html' %}
+
+{% load my_tags %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-1">
+        </div>
+
+        <div class="col-4">
+
+            <div class="card w-100" style="width: 18rem;">
+                <div class="card-header  text-center">
+                    <p class="card-text">
+                        <h4>Пользователь: {{object.email}}</h4>
+                    </p>
+                </div>
+
+                <div class="card-body text-center">
+                    <img src="{{ object.avatar|my_media }}" class="card-img-top" alt="...">
+
+                </div>
+
+                <div class="card-footer text-center">
+                    {% if user.is_authenticated %}
+                        <p>
+                            <a href="{% url 'users:user-update' object.pk %}" class="btn btn-primary">Внести изменения</a>
+                            <a href="{% url 'users:user-delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5">
+
+            <p class="card-text">
+                <h4>Город: {{object.city}}</h4>
+            </p>
+            <p class="card-text">
+                <h4>Телефон: {{object.phone}}</h4>
+            </p>
+            <p class="card-text">
+                <h4>Почта: {{object.email}}</h4>
+            </p>
+
+
+
+        </div>
+
+        <div class="col-2">
+            {% if user.is_authenticated %}
+                <a href="{% url 'users:user-send-message' object.pk %}" class="btn btn-primary">Отправить сообщение</a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

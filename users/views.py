@@ -1,11 +1,12 @@
 
 import random
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import CreateView, TemplateView, ListView, UpdateView, DetailView, DeleteView
 
 # from rest_framework.generics import (
 #     CreateAPIView,
@@ -20,8 +21,10 @@ from django.views.generic import CreateView, TemplateView, ListView
 
 from config import settings
 from config.settings import EMAIL_HOST_USER
-from users.forms import RegisterForm
-from users.models import User
+from users.forms import RegisterForm, UserForm, MessageForm
+from users.models import User, Message
+
+
 # from users.paginations import CustomPagination
 # from users.serializers import UserSerializer
 
@@ -65,7 +68,81 @@ def email_verification(request, token):
     return HttpResponseRedirect('/users/login/')
 
 
-class UsersListView(ListView):
+class UsersListView(UserPassesTestMixin, ListView):
 
     model = User
     template_name = 'users_app/users_list.html'
+
+    def test_func(self):
+        user =self.request.user
+        return user.is_superuser
+
+
+class UserDetailView(DetailView):
+
+    model = User
+    template_name = 'users_app/user_detail.html'
+
+
+class UserUpdateView(UserPassesTestMixin, UpdateView):
+
+    model = User
+    template_name = 'users_app/user_form.html'
+    form_class = UserForm
+    success_url = reverse_lazy('users:users-list')
+
+    def test_func(self):
+        user =self.request.user
+        return user.is_superuser
+
+
+class UserDeleteView(UserPassesTestMixin, DeleteView):
+
+    model = User
+    template_name = 'users_app/user_confirm_delete.html'
+    success_url = reverse_lazy('users:users-list')
+
+    def test_func(self):
+        user =self.request.user
+        return user.is_superuser
+
+
+class MessageForUserView(UpdateView):
+    """ Отправляем сообщение пользователю. """
+
+    model = User
+    form_class = MessageForm
+    template_name = 'users_app/send_message_form.html'
+    success_url = reverse_lazy('users:users-list')
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data()
+    #     context['email_for_send'] = self.request.user.email
+    #     return context
+
+    # def get_queryset(self, *args, **kwargs):
+    #     queryset = super().get_queryset(*args, **kwargs)
+    #
+    #     id_addressee = self.kwargs.get("pk")
+    #
+    #     return queryset
+
+    # def form_valid(self, form):
+    #     user = form.save()
+    #     email_for_send = user.email
+    #     text = user.message_set.get(pk=1)
+    #     user.save()
+    #
+    #     send_mail(
+    #         'Сообщение от Admin',
+    #         f'{text}',
+    #         EMAIL_HOST_USER,
+    #         [email_for_send],
+    #     )
+    #     return super().form_valid(form)
+    #
+    # def messages_delete(request):
+    #     """ Удаляем все сообщения пользователю. """
+    #
+    #     messages = Message.objects.all()
+    #     messages.delete()
