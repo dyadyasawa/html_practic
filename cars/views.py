@@ -2,7 +2,7 @@
 # from rest_framework.response import Response
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from rest_framework.views import APIView
+           # !!!!! from rest_framework.views import APIView
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from cars.forms import CarForm, CategoryForm
