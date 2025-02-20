@@ -107,7 +107,7 @@ class UserDeleteView(UserPassesTestMixin, DeleteView):
         return user.is_superuser
 
 
-class MessageForUserView(UpdateView):
+class MessageForUserView(CreateView):
     """ Отправляем сообщение пользователю. """
 
     model = User
@@ -127,19 +127,25 @@ class MessageForUserView(UpdateView):
     #
     #     return queryset
 
-    # def form_valid(self, form):
-    #     user = form.save()
-    #     email_for_send = user.email
-    #     text = user.message_set.get(pk=1)
-    #     user.save()
-    #
-    #     send_mail(
-    #         'Сообщение от Admin',
-    #         f'{text}',
-    #         EMAIL_HOST_USER,
-    #         [email_for_send],
-    #     )
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        message = form.save()
+        # message = form.save()
+        addressee = message.addressee
+        # email_for_send = User.objects.get(pk=user_id).email
+        # text = user.message_set.get(pk=1)
+        # user.save()
+        #
+        # send_mail(
+        #     'Сообщение от Admin',
+        #     f'{text}',
+        #     EMAIL_HOST_USER,
+        #     [email_for_send],
+        # )
+        # print(f'адрес: {email_for_send}')
+        # print(f'id: {user_id}')
+        print("Привет!")
+        print(f'addressee: {addressee}')
+        return super().form_valid(form)
     #
     # def messages_delete(request):
     #     """ Удаляем все сообщения пользователю. """
