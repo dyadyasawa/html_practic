@@ -16,10 +16,14 @@
 
                 <div class="card-body">
                     <img src="{{ object.image|my_media }}" class="card-img-top" alt="...">
+                    <p></p>
                     <a href="{% url 'users:user-detail' object.owner.pk %}" class="btn btn-primary">Связаться с продавцом</a>
+                    <p></p>
+                    <p>
                         {% if user.is_superuser %}
-                            <a href="#" class="btn btn-primary">Что-то ещё от админа</a>
+                            <a href="{% url 'cars:user-send-message' object.pk %}" class="btn btn-primary">Сообщение пользователю</a>
                         {% endif %}
+                    </p>
                 </div>
 
                 <div class="card-footer">

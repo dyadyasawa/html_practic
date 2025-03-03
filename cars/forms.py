@@ -88,3 +88,9 @@ class CategoryForm(StyleMixin):
 #     class Meta:
 #         model = Version
 #         fields = '__all__'
+
+
+class MessageForm(StyleMixin):
+    class Meta:
+        model = Car
+        fields = ("message_for_owner",)

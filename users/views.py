@@ -21,8 +21,8 @@ from django.views.generic import CreateView, TemplateView, ListView, UpdateView,
 
 from config import settings
 from config.settings import EMAIL_HOST_USER
-from users.forms import RegisterForm, UserForm, MessageForm
-from users.models import User, Message
+from users.forms import RegisterForm, UserForm
+from users.models import User
 
 
 # from users.paginations import CustomPagination
@@ -105,50 +105,3 @@ class UserDeleteView(UserPassesTestMixin, DeleteView):
     def test_func(self):
         user =self.request.user
         return user.is_superuser
-
-
-class MessageForUserView(CreateView):
-    """ Отправляем сообщение пользователю. """
-
-    model = User
-    form_class = MessageForm
-    template_name = 'users_app/send_message_form.html'
-    success_url = reverse_lazy('users:users-list')
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data()
-    #     context['email_for_send'] = self.request.user.email
-    #     return context
-
-    # def get_queryset(self, *args, **kwargs):
-    #     queryset = super().get_queryset(*args, **kwargs)
-    #
-    #     id_addressee = self.kwargs.get("pk")
-    #
-    #     return queryset
-
-    def form_valid(self, form):
-        message = form.save()
-        # message = form.save()
-        addressee = message.addressee
-        # email_for_send = User.objects.get(pk=user_id).email
-        # text = user.message_set.get(pk=1)
-        # user.save()
-        #
-        # send_mail(
-        #     'Сообщение от Admin',
-        #     f'{text}',
-        #     EMAIL_HOST_USER,
-        #     [email_for_send],
-        # )
-        # print(f'адрес: {email_for_send}')
-        # print(f'id: {user_id}')
-        print("Привет!")
-        print(f'addressee: {addressee}')
-        return super().form_valid(form)
-    #
-    # def messages_delete(request):
-    #     """ Удаляем все сообщения пользователю. """
-    #
-    #     messages = Message.objects.all()
-    #     messages.delete()

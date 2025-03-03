@@ -17,6 +17,8 @@ from cars.views import (
     CategoryCreateView,
     CategoryUpdateView,
     CategoryDeleteView,
+
+    MessageForUserView,
 )
 
 app_name = CarsConfig.name
@@ -35,4 +37,6 @@ urlpatterns = [
     path("category_create/", CategoryCreateView.as_view(), name="category-create"),
     path("category_update/<int:pk>/", CategoryUpdateView.as_view(), name="category-update"),
     path("category_delete/<int:pk>/", CategoryDeleteView.as_view(), name="category-delete"),
+
+    path('message/<int:pk>/', MessageForUserView.as_view(), name='user-send-message'),
 ]

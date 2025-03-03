@@ -24,3 +24,13 @@ class CategoryAdmin(admin.ModelAdmin):
     )
     list_filter = ("name",)
     search_fields = ("name",)
+
+
+# @admin.register(Message)
+# class MessageAdmin(admin.ModelAdmin):
+#     list_display = (
+#         "addressee",
+#         "message",
+#     )
+#     list_filter = ("addressee",)
+#     search_fields = ("addressee",)

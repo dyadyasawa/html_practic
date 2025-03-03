@@ -35,7 +35,9 @@ class Car(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, editable=False, verbose_name='Дата изменения')
     passengers_count = models.PositiveIntegerField(verbose_name="Количество пассажиров без водителя", **NULLABLE)
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE, **NULLABLE, verbose_name='Владелец')
+    message_for_owner = models.TextField(verbose_name='Сообщение владельцу', **NULLABLE)
 
     def __str__(self):
         return f'Машина: {self.name}, год выпуска: {self.year}'
