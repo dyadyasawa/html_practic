@@ -40,7 +40,7 @@
             </ul>
         </div>
             <div class="col-3">
-                {% i f user == object.owner or user.is_superuser %}
+                {% if user == object.owner or user.is_superuser %}
                      <a class="btn btn-warning m-2" href="{% url 'cars:car-update' object.pk %}">Редактировать</a>
                      <a class="btn btn-danger m-2" href="{% url 'cars:car-delete' object.pk %}">Удалить</a>
                 {% endif %}
